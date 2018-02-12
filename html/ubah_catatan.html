@@ -1,5 +1,5 @@
 <form>
-	Tambah Catatan
+	Ubah Catatan
 	<br>
 	Catatan <input type="text" id="catatan">
 	<br>
@@ -9,10 +9,22 @@
 </form>
 
 <script type="text/javascript">
+$(document).ready(
+	function() {
+		$.post('http://localhost/api_server_maenan_js/catatan/read',
+		{
+			id: json.id_catatan,
+		},
+		function(data,status){
+			$("#catatan").val(data.catatan);
+		});
+	}
+);
+
 function f_submit() {
-	$.post('http://localhost/api_server_maenan_js/catatan/tambah',
+	$.post('http://localhost/api_server_maenan_js/catatan/ubah',
 	{
-		id: json.id,
+		id: json.id_catatan,
 		catatan: $("#catatan").val(),
 	},
 	function(data,status){

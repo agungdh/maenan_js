@@ -20,7 +20,7 @@ function f_submit() {
 		if (jQuery.isEmptyObject(data)) {
 			alert('Login GAGAL !!!');
 		} else {
-			id = data.id;
+			json.id = data.id;
 			$(document).ready(
 			    function() {
 			        $("#badan").load('./html/tabel_catatan.html');

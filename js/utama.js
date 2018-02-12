@@ -1,6 +1,6 @@
 $(document).ready(
     function() {
-        if (id == null) {
+        if (jQuery.isEmptyObject(json)) {
 			$("#badan").load('./html/login.html');
 		}
     }

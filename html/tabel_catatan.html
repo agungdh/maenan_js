@@ -17,6 +17,11 @@
 		$("#badan").load('./html/tambah_catatan.html');
 	}
 
+	function ubah(id) {
+		json.id_catatan = id;
+		$("#badan").load('./html/ubah_catatan.html');
+	}
+
 	function hapus(id) {
 		$.post('http://localhost/api_server_maenan_js/catatan/hapus',
 		{
@@ -24,10 +29,8 @@
 		},
 		function(data,status)
 		{
-
+			refresh();
 		});
-
-		refresh();
 	}
 
 	function refresh() {
@@ -35,7 +38,7 @@
 
 		$.post('http://localhost/api_server_maenan_js/catatan',
 		{
-			id: id,
+			id: json.id,
 		},
 		function(data,status){
 			$(document).ready(
@@ -47,7 +50,7 @@
 						  '<td>' + i + '</td>' +
 						  '<td>' + value.catatan + '</td>' +
 						  '<td>' +
-						  	'<button type="button" id="ubah">Ubah</button>' +
+						  	'<button type="button" id="ubah" onclick="ubah($(this).parent().parent().prop(' + "\'id\'" + '))">Ubah</button>' +
 						  	'<button type="button" id="hapus" onclick="hapus($(this).parent().parent().prop(' + "\'id\'" + '))">Hapus</button>' +
 						  '</td>' +
 					  '</tr>';

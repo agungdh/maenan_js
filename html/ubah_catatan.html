@@ -4,7 +4,8 @@
 	Catatan <input type="text" id="catatan">
 	<br>
 	<button type="button" id="submit" onclick="f_submit()">Submit</button>
-	<button type="reset">Reset</button>	
+	<button type="reset" id="reset">Reset</button>	
+	<button type="button" id="batal" onclick="f_batal()">Batal</button>	
 </form>
 
 <script type="text/javascript">
@@ -17,5 +18,9 @@ function f_submit() {
 	function(data,status){
 		$("#badan").load('./html/tabel_catatan.html');
 	});
+}
+
+function f_batal() {	
+	$("#badan").load('./html/tabel_catatan.html');
 }
 </script>

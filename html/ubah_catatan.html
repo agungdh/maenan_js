@@ -11,7 +11,7 @@
 <script type="text/javascript">
 $(document).ready(
 	function() {
-		$.post('http://localhost/api_server_maenan_js/catatan/read',
+		$.post('https://apps.agungdh.com/api_server_maenan_js/catatan/read',
 		{
 			id: json.id_catatan,
 		},
@@ -22,7 +22,7 @@ $(document).ready(
 );
 
 function f_submit() {
-	$.post('http://localhost/api_server_maenan_js/catatan/ubah',
+	$.post('https://apps.agungdh.com/api_server_maenan_js/catatan/ubah',
 	{
 		id: json.id_catatan,
 		catatan: $("#catatan").val(),

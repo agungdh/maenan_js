@@ -11,10 +11,22 @@
 
 <script type="text/javascript">
 function f_submit() {
-	alert(
-		'username = ' + $("#username").val() 
-		+ "\n" +
-		'password = ' + $("#password").val() 
-		);
+	$.post('http://localhost/api_server_maenan_js/login',
+	{
+		username: $("#username").val(),
+		password: sha512($("#password").val()),
+	},
+	function(data,status){
+		if (jQuery.isEmptyObject(data)) {
+			alert('Login GAGAL !!!');
+		} else {
+			id = data.id;
+			$(document).ready(
+			    function() {
+			        $("#badan").load('./html/tabel_catatan.html');
+			    }
+			);
+		}
+	});
 }
 </script>

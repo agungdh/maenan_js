@@ -1,6 +1,6 @@
 $(document).ready(
     function() {
-        if (username == null || password == null) {
+        if (id == null) {
 			$("#badan").load('./html/login.html');
 		}
     }

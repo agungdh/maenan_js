@@ -5,6 +5,16 @@
 	<br>
 	Password<input type="password" id="password">
 	<br>
-	<button id="submit">Submit</button>
-	<button type="reset" id="reset">Reset</button>	
+	<button type="button" id="submit" onclick="f_submit()">Submit</button>
+	<button type="reset">Reset</button>	
 </form>
+
+<script type="text/javascript">
+function f_submit() {
+	alert(
+		'username = ' + $("#username").val() 
+		+ "\n" +
+		'password = ' + $("#password").val() 
+		);
+}
+</script>

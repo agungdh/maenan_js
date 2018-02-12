@@ -1,0 +1,21 @@
+<form>
+	Tambah Catatan
+	<br>
+	Catatan <input type="text" id="catatan">
+	<br>
+	<button type="button" id="submit" onclick="f_submit()">Submit</button>
+	<button type="reset">Reset</button>	
+</form>
+
+<script type="text/javascript">
+function f_submit() {
+	$.post('http://localhost/api_server_maenan_js/catatan/tambah',
+	{
+		id: id,
+		catatan: $("#catatan").val(),
+	},
+	function(data,status){
+		$("#badan").load('./html/tabel_catatan.html');
+	});
+}
+</script>

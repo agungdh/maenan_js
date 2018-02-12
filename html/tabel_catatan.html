@@ -1,33 +1,68 @@
+<button type="button" id="tambah" onclick="tambah()">Tambah</button>
+<button type="button" id="refresh" onclick="refresh()">Refresh</button>
 <table id="tabelku" border="1">
 	<thead>
 		<tr>
-			<th>Tanggal</th>
+			<th>NO</th>
 			<th>Catatan</th>			
 			<th>Proses</th>			
 		</tr>
 	</thead>
 	<tbody>
-		<tr id="no1">
-			<td>12-12-2012</td>
-			<td>test1</td>
-			<td>
-				<button type="button" id="ubah">Ubah</button>
-				<button type="button" id="hapus">Hapus</button>
-			</td>
-		</tr>
-		<tr id="no2">
-			<td>13-12-2012</td>
-			<td>test2</td>
-			<td>
-				<button type="button" id="ubah">Ubah</button>
-				<button type="button" id="hapus" onclick="hapus($(this).parent().parent().prop('id'))">Hapus</button>
-			</td>
-		</tr>
 	</tbody>
 </table>
 
 <script type="text/javascript">
-	function hapus(id) {
-		$('#'+id).remove();
+	function tambah() {
+		$("#badan").load('./html/tambah_catatan.html');
 	}
+
+	function hapus(id) {
+		$.post('http://localhost/api_server_maenan_js/catatan/hapus',
+		{
+			id: id,
+		},
+		function(data,status)
+		{
+
+		});
+
+		refresh();
+	}
+
+	function refresh() {
+		$('#tabelku tbody').empty();
+
+		$.post('http://localhost/api_server_maenan_js/catatan',
+		{
+			id: id,
+		},
+		function(data,status){
+			$(document).ready(
+			    function() {
+					var i = 1;
+			        $.each( data, function(key, value) {
+					  var satu =
+					  '<tr id="' + value.id + '">' + 
+						  '<td>' + i + '</td>' +
+						  '<td>' + value.catatan + '</td>' +
+						  '<td>' +
+						  	'<button type="button" id="ubah">Ubah</button>' +
+						  	'<button type="button" id="hapus" onclick="hapus($(this).parent().parent().prop(' + "\'id\'" + '))">Hapus</button>' +
+						  '</td>' +
+					  '</tr>';
+					  $('#tabelku tbody').append(satu);
+					  i++;
+					});
+			    }
+			);
+		});
+	}
+
+	$(document).ready(
+		function() {
+			refresh();
+		}
+	);
+
 </script>

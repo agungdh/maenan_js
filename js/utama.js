@@ -1,12 +1,17 @@
+function init() {
+	if (jQuery.isEmptyObject(json)) {
+		$("#badan").load('./html/login.html');
+		$("#logout").prop("style", "display: none");
+	}
+}
+
 $(document).ready(
     function() {
-        if (jQuery.isEmptyObject(json)) {
-			$("#badan").load('./html/login.html');
-			$("#logout").prop("style", "display: none");
-		}
+        init();
     }
 );
 
 function logout() {
-	$(location).attr('href', '');
+	json = {};	
+	init();
 }

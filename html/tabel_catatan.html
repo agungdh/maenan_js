@@ -23,14 +23,16 @@
 	}
 
 	function hapus(id) {
-		$.post('https://apps.agungdh.com/api_server_maenan_js/catatan/hapus',
-		{
-			id: id,
-		},
-		function(data,status)
-		{
-			refresh();
-		});
+		if (confirm("Yakin hapus ?")) {
+			$.post('https://apps.agungdh.com/api_server_maenan_js/catatan/hapus',
+			{
+				id: id,
+			},
+			function(data,status)
+			{
+				refresh();
+			});
+		}
 	}
 
 	function refresh() {
